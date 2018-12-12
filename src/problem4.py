@@ -73,8 +73,24 @@ def problem4(number_of_stairs, step_size, starting_point, window):
     # IMPORTANT: For PARTIAL CREDIT, you can draw just the black "bottoms"
     #            of the stair steps.
     # -------------------------------------------------------------------------
-
-
+    x = starting_point.x
+    y = starting_point.y
+    for k in range (number_of_stairs):
+        startpoint=starting_point
+        startpoint.attach_to(window)
+        horizontal= rg.Line(rg.Point(x,y-step_size),rg.Point(x+step_size,y-step_size))
+        horizontal.thickness=3
+        horizontal.attach_to(window)
+        vertical= rg.Line(rg.Point(x,y),rg.Point(x,y-step_size))
+        vertical.attach_to(window)
+        vertical.thickness = 3
+        vertical.color = 'magenta'
+        window.render()
+        x = x +(step_size)
+        y = y - (step_size)
+    endpoint = rg.Point(starting_point.x+number_of_stairs*step_size, starting_point.y-number_of_stairs*step_size)
+    endpoint.attach_to(window)
+    window.render()
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
